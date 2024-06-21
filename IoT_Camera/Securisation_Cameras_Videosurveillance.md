@@ -82,9 +82,5 @@ En appliquant ces mesures de sécurité, vous réduisez considérablement les ri
 
 ## Références
 
-- [Guide de Sécurité IoT de l'ANSSI](https://www.ssi.gouv.fr/guide/guide-de-securite-des-objets-connectes/)
-- [Bonnes Pratiques pour la Sécurité des Caméras IP](https://www.cnil.fr/fr/bonnes-pratiques-pour-la-securite-des-cameras-ip)
-- [Sécurité des Objets Connectés](https://www.cnil.fr/fr/securite-des-objets-connectes)
 - [Shodan](https://www.shodan.io/)
 - [Censys](https://censys.io/)
-- [Guide de Sécurité des Caméras de Vidéosurveillance](https://www.cnil.fr/fr/securite-des-cameras-de-videosurveillance)
