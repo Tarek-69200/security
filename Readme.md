@@ -1,4 +1,3 @@
-
 # Présentation sur la Sécurité des Serveurs Web
 
 ## Introduction
