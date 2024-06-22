@@ -45,7 +45,3 @@ Pour sécuriser les serveurs web contre les menaces en ligne, plusieurs stratég
 ## Conclusion
 
 La sécurité des serveurs web est un élément essentiel de la cybersécurité, visant à protéger les données, les services en ligne et la réputation des entreprises et des organisations. En mettant en œuvre des stratégies de sécurité robustes et en restant vigilants face aux menaces en ligne, nous pouvons garantir la sécurité et la disponibilité des serveurs web et des services qu'ils hébergent.
-
----
-
-Cette présentation offre un aperçu de l'importance de la sécurité des serveurs web, des principales menaces auxquelles ils sont confrontés et des stratégies pour les sécuriser contre les attaques en ligne.
