@@ -1,0 +1,78 @@
+# 🔒 Sécurité des applications web – Dépendances tierces
+
+## 📌 Contexte
+
+Les applications modernes reposent fortement sur des **dépendances tierces** (frameworks, bibliothèques, plugins...).
+
+- **Composer** (PHP)
+- **npm / yarn / pnpm** (JavaScript / Node.js)
+- **pip** (Python)
+- **Maven / Gradle** (Java)
+
+⚠️ Bien que pratiques, ces dépendances peuvent introduire des **failles de sécurité** si elles ne sont pas surveillées ni maintenues.
+
+## ⚠️ Vulnérabilités des dépendances
+
+Certaines versions de librairies contiennent des failles répertoriées sous forme de **CVE** (*Common Vulnerabilities and Exposures*).
+
+- [cve.org](https://www.cve.org/)
+
+Un attaquant peut :
+- Identifier vos dépendances vulnérables.
+- Exploiter ces failles pour prendre le contrôle de votre application.
+- Mener des attaques de type **supply chain** (chaîne d’approvisionnement).
+
+### Exemple `package.json` vulnérable :
+
+```json
+{
+  "dependencies": {
+    "express": "4.16.0",
+    "lodash": "4.17.11"
+  }
+}
+```
+
+➡️ Ici, lodash 4.17.11 contient plusieurs CVE connus.
+
+## ✅ Bonnes pratiques
+
+### 🚫 Limiter les dépendances : éviter les packages inutiles.
+
+- Utiliser des dépendances tierces à jour.
+
+### ⬆️ Mettre à jour régulièrement : composer update, npm audit fix, etc.
+
+- ⭐ Privilégier les librairies reconnues et maintenues.
+
+### 🔎 Vérifier la provenance et éviter les sources douteuses.
+
+- 🛡️ Automatiser les scans de vulnérabilités :
+
+```bash
+npm audit
+npm audit fix
+```
+
+- 🛡️ Utiliser des outils tiers :
+
+```bash
+composer audit
+composer audit fix
+```
+
+- 🛡️ Utiliser des outils tiers :
+
+```bash
+snyk test
+owasp dependency-check
+```
+
+- 🛡️ Appliquer les recommandations OWASP.
+
+### 📚 Références
+
+- [cve.org](https://www.cve.org/)
+- [OWASP](https://owasp.org/)
+- [Snyk](https://snyk.io/)
+- [OWASP Dependency-Check](https://owasp.org/www-project-dependency-check/)
