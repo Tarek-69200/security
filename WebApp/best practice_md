@@ -1,78 +1,74 @@
-# 🔒 Sécurité des applications web – Dépendances tierces
+# 🔒 Sécurité des Dépendances dans les Applications Web
 
-## 📌 Contexte
+Ce document présente les bonnes pratiques pour gérer et sécuriser les dépendances tierces dans vos projets web.
 
-Les applications modernes reposent fortement sur des **dépendances tierces** (frameworks, bibliothèques, plugins...).
+## 📌 Contexte : Le Rôle des Dépendances
+
+Les applications modernes reposent fortement sur des **dépendances tierces** (frameworks, bibliothèques, plugins) pour accélérer le développement. Les gestionnaires de paquets courants incluent :
 
 - **Composer** (PHP)
 - **npm / yarn / pnpm** (JavaScript / Node.js)
 - **pip** (Python)
 - **Maven / Gradle** (Java)
 
-⚠️ Bien que pratiques, ces dépendances peuvent introduire des **failles de sécurité** si elles ne sont pas surveillées ni maintenues.
+Cependant, ces dépendances peuvent introduire des **failles de sécurité** si elles ne sont pas correctement gérées.
 
-## ⚠️ Vulnérabilités des dépendances
+## ⚠️ Risques et Vulnérabilités
 
-Certaines versions de librairies contiennent des failles répertoriées sous forme de **CVE** (*Common Vulnerabilities and Exposures*).
+Les dépendances peuvent contenir des failles de sécurité connues, répertoriées sous forme de **CVE** (*Common Vulnerabilities and Exposures*). Un attaquant peut exploiter ces failles pour compromettre votre application.
 
-- [cve.org](https://www.cve.org/)
+### Scénario d'Attaque
 
-Un attaquant peut :
-- Identifier vos dépendances vulnérables.
-- Exploiter ces failles pour prendre le contrôle de votre application.
-- Mener des attaques de type **supply chain** (chaîne d’approvisionnement).
+1.  **Identification** : L'attaquant scanne l'application pour identifier les dépendances et leurs versions.
+2.  **Exploitation** : Il recherche des CVE connues pour ces versions et utilise un exploit public.
+3.  **Compromission** : L'attaquant peut prendre le contrôle du serveur, voler des données ou mener des attaques de type **supply chain**.
 
-### Exemple `package.json` vulnérable :
+### Exemple : `package.json` Vulnérable
 
 ```json
 {
   "dependencies": {
     "express": "4.16.0",
-    "lodash": "4.17.11"
+    "lodash": "4.17.11" 
   }
 }
 ```
 
-➡️ Ici, lodash 4.17.11 contient plusieurs CVE connus.
+> Dans cet exemple, la version `4.17.11` de `lodash` est connue pour contenir plusieurs failles de sécurité.
 
-## ✅ Bonnes pratiques
+## ✅ Bonnes Pratiques de Sécurité
 
-### 🚫 Limiter les dépendances : éviter les packages inutiles.
+Pour minimiser les risques, suivez ces recommandations :
 
-- Utiliser des dépendances tierces à jour.
+-   **Limiter la surface d'attaque** : N'ajoutez que les dépendances strictement nécessaires au projet.
+-   **Maintenir les dépendances à jour** : Planifiez des mises à jour régulières pour appliquer les correctifs de sécurité.
+-   **Choisir des sources fiables** : Privilégiez les bibliothèques populaires, bien maintenues et avec une communauté active.
+-   **Automatiser la détection** : Intégrez des outils d'analyse de vulnérabilités dans votre chaîne d'intégration continue (CI/CD).
 
-### ⬆️ Mettre à jour régulièrement : composer update, npm audit fix, etc.
+## 🛠️ Outils d'Analyse Automatisée
 
-- ⭐ Privilégier les librairies reconnues et maintenues.
+Utilisez ces outils pour scanner vos dépendances et identifier les vulnérabilités connues :
 
-### 🔎 Vérifier la provenance et éviter les sources douteuses.
+-   **npm**
+    ```bash
+    npm audit
+    npm audit fix
+    ```
+-   **Composer**
+    ```bash
+    composer audit
+    ```
+-   **Outils spécialisés**
+    ```bash
+    # Snyk
+    snyk test
 
-- 🛡️ Automatiser les scans de vulnérabilités :
+    # OWASP Dependency-Check
+    dependency-check.sh --scan . 
+    ```
 
-```bash
-npm audit
-npm audit fix
-```
+## 📚 Références Utiles
 
-- 🛡️ Utiliser des outils tiers :
-
-```bash
-composer audit
-composer audit fix
-```
-
-- 🛡️ Utiliser des outils tiers :
-
-```bash
-snyk test
-owasp dependency-check
-```
-
-- 🛡️ Appliquer les recommandations OWASP.
-
-### 📚 Références
-
-- [cve.org](https://www.cve.org/)
-- [OWASP](https://owasp.org/)
-- [Snyk](https://snyk.io/)
-- [OWASP Dependency-Check](https://owasp.org/www-project-dependency-check/)
+-   **OWASP** : [Top 10 - A06:2021 – Vulnerable and Outdated Components](https://owasp.org/Top10/A06_2021-Vulnerable_and_Outdated_Components/)
+-   **CVE Database** : [cve.org](https://www.cve.org/)
+-   **Snyk** : [snyk.io](https://snyk.io/)
