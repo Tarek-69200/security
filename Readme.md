@@ -1,6 +1,3 @@
-Bien sûr, voici une présentation générale sur la sécurité des serveurs web :
-
----
 
 # Présentation sur la Sécurité des Serveurs Web
 
